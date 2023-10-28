@@ -16,8 +16,6 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void worker1();
-    void worker2();
     void launch_worker(long long start_index, long long end_index, int operations_amount, int thread_number);
     void launch_sha_calc(int threads_number);
 

@@ -39,7 +39,7 @@ void MainWindow::launch_worker(long long start_val, long long end_val, int opera
 
     QElapsedTimer timer;
     timer.start();
-    qDebug() << "Start seconds: " + QString::number(int(timer.nsecsElapsed() / 1000000000.0));
+    //qDebug() << "Start seconds: " + QString::number(int(timer.nsecsElapsed() / 1000000000.0));
 
     long long val = start_val;
     while (val < end_val)
@@ -57,13 +57,11 @@ void MainWindow::launch_worker(long long start_val, long long end_val, int opera
 
         if(val % 10000000 == 0)
         {
-
             qDebug() << "Number: " + input + " SHA1 = " + result_hash;
-
         }
     }
 
-    qDebug() << "End seconds: " + QString::number(int(timer.nsecsElapsed() / 1000000000.0));
+    //qDebug() << "End seconds: " + QString::number(int(timer.nsecsElapsed() / 1000000000.0));
     //ui->textEdit->append("Elapsed time (s): " + QString::number(int(timer.nsecsElapsed() / 1000000000.0)));
     ui->textEdit->append("Exiting thread # " + QString::number(thread_number) + " after " + QString::number(int(timer.nsecsElapsed() / 1000000000.0)) + " seconds");
 }
@@ -83,7 +81,7 @@ void MainWindow::launch_sha_calc(int threads_number = QThread::idealThreadCount(
     {
         long long start_val = starting_phone + i * operations_amount_per_thread;
         long long end_val = start_val + operations_amount_per_thread;
-        qDebug() << "vals: " << start_val << " " << end_val << "thr num: " << threads_number;
+        //qDebug() << "vals: " << start_val << " " << end_val << "thr num: " << threads_number;
         QThread* thread = new QThread;
         QObject::connect(thread, &QThread::started, [=] {
             launch_worker(start_val, end_val, operations_amount_per_thread);
